@@ -15,6 +15,7 @@ Task 3: Create a summary function that provides a report of all activities and t
 
 activities = ["Dancing", "Swimming", "Biking"]
 duration = [10, 20, 15]
+cals_burned = 0
 
 def log_fitness():
     global activities
@@ -28,19 +29,22 @@ def log_fitness():
 
 def cals_burned():
     global duration
+    global cals_burned
     total_calories = 0
     for i in range(len(duration)):
         total_calories = total_calories + duration[i]
     total_calories = total_calories * 3.5
     print(f"You have made amazing progress! You already burned {total_calories} calories!")
+    cals_burned = total_calories
 
 
 def summary():
     global activities
     global duration
+    global cals_burned
     for i in range(len(activities)):
         print(f"\nActivity: {activities[i]} / Time Spent: {duration[i]} minutes")
-    print("\n")
+    print(f"\nTotal Calories Burned: {cals_burned}\n")
 
 while True:
     user_answer = input("Welcome to the fitness tracker! Would you like to [L]og your workout, view [C]alorie estimations, view your [S]ummary, or [Q]uit? ").upper()
